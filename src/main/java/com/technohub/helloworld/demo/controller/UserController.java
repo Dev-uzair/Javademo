@@ -25,5 +25,16 @@ public class UserController {
     public List<User> findAll(){
         return userService.findAll();
     }
+    @GetMapping("/findById/{userId}")
+    public User findById(@PathVariable Long userId){
+        return userService.findById ( userId );
+
+    }
+    @PutMapping("/updateById/{userId}")
+    public User updateById(@PathVariable Long userId,@RequestBody User user){
+        User rUser=userService.updateById(userId,user);
+        return rUser;
+    }
+
 
 }
