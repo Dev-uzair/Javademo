@@ -1,0 +1,21 @@
+        Controller  -->  Service --> Repository --> Database
+
+        jin class ke upar
+        @Component
+        @Service
+        @Repository
+        @Controller
+        @Restroller
+
+        unke andar k sare method beans
+
+
+        delete user id -->
+         check in db -->
+         if prsent than delete it if not throw an exception
+
+
+         @O T O
+         @M T O
+         @O T M
+         @M T M

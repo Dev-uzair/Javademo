@@ -11,11 +11,13 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService userService ;
+
     @GetMapping("/")
     public String doSomething(){
     return "hello";
     }
+
     @PostMapping("/")
     public void createUser(@RequestBody User user){
         userService.createUser(user);
@@ -35,6 +37,12 @@ public class UserController {
         User rUser=userService.updateById(userId,user);
         return rUser;
     }
+    @DeleteMapping("/{userId}")
+    public User deleteById(@PathVariable Long userId){
+        User user = userService.deleteById ( userId );
+        return user;
+    }
+
 
 
 }

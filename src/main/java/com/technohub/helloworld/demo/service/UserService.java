@@ -3,14 +3,32 @@ package com.technohub.helloworld.demo.service;
 import com.technohub.helloworld.demo.model.User;
 import com.technohub.helloworld.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserService {
-    @Autowired
+//    field injection
+//    @Autowired
+//    private UserRepository repository;
+
+
+//    constructor injection
+//    private UserRepository repository;
+//    @Autowired
+//    public UserService (UserRepository repository){
+//        this.repository=repository;
+//    }
+//
+//    Setter injection
     private UserRepository repository;
+    @Autowired
+    public void setRepository(UserRepository repository) {
+                this.repository = repository;
+    }
+
 
     public void createUser(User request) {
         User entity = new User ( );
@@ -44,5 +62,11 @@ public class UserService {
         }
        return repository.save ( dbUser );
 
+    }
+
+    public User deleteById(Long userId){
+        User user = repository.findById ( userId ).orElseThrow ( () -> new RuntimeException ( "Id not found" ) );
+        repository.delete ( user );
+        return user;
     }
 }
